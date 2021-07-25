@@ -15,10 +15,15 @@ namespace JSerial
             public bool Accepted { get; set; }
             [JsonPropertyName("id")]
             public string Id { get; set; }
+            public double Cost { get; set; }
 
             [JsonPropertyName("reason")]
             [JsonConverter(typeof(ReasonJsonConverter))]
             public Reason Reason { get; set; }
+
+            [JsonPropertyName("time")]
+            [JsonConverter(typeof(DateTimeJsonConverter))]
+            public DateTime TimeStamp { get; set; }
         }
 
         public static string ReasonEnumToString(Reason reason)
@@ -26,7 +31,7 @@ namespace JSerial
             return reason switch
             {
                 Reason.OUT_OF_DATE => "OUT_OF_DATE",
-                _ => "UNKNOWN",
+                _ => "UNKNOWN"
             };
         }
 
